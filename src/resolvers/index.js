@@ -1,5 +1,7 @@
+import { Book } from './../connectors'
+
 export const resolvers = {
     Query : {
-        hello: () => 'Hello world!',
+        hello: () => Book.getBook(),
     },
 };

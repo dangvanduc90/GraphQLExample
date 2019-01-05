@@ -5,7 +5,6 @@ const GRAPHQL_PORT = 4000;
 const typeDefs = require('fs').readFileSync(__dirname + "/../schema/new_ticket_type.graphql", 'utf-8');
 const { resolvers } = require('./resolvers')
 
-console.log(resolvers)
 const server = new ApolloServer({ typeDefs, resolvers });
 
 var app = express();
