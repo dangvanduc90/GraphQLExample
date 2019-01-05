@@ -1,20 +1,11 @@
 var express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server-express');
 const GRAPHQL_PORT = 4000;
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
- 
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-  },
-};
+const typeDefs = require('fs').readFileSync(__dirname + "/../schema/new_ticket_type.graphql", 'utf-8');
+const { resolvers } = require('./resolvers')
+
+console.log(resolvers)
 const server = new ApolloServer({ typeDefs, resolvers });
 
 var app = express();
